@@ -1,7 +1,5 @@
 package de.ni.fun.battleship.view.console;
 
-import de.ni.fun.battleship.control.network.NetworkManager;
-
 public class Printer {
 
     private static Printer single;

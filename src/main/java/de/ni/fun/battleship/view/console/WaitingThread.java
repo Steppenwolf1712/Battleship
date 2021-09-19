@@ -2,9 +2,11 @@ package de.ni.fun.battleship.view.console;
 
 public class WaitingThread extends Thread {
 
+    public final static Object obj = new Object();
+
     private boolean shutdown = false;
 
-    public void run() {
+    public synchronized void run() {
         shutdown = false;
         System.out.print("Warte auf einen anderen Spieler ... -");
         try {
@@ -12,24 +14,24 @@ public class WaitingThread extends Thread {
             while (!shutdown) {
                 switch (counter) {
                     case 0:
-                        System.out.println("\b\\");
-                        this.wait(500);
+                        System.out.print("\b\\");
+                        this.wait(500L);
                         counter++;
                         break;
                     case 1:
-                        System.out.println("\b|");
-                        this.wait(500);
+                        System.out.print("\b|");
+                        this.wait(500L);
                         counter++;
                         break;
                     case 2:
                         System.out.print("\b/");
-                        this.wait(500);
+                        this.wait(500L);
                         counter++;
                         break;
                     case 3:
-                        System.out.println("\b-");
-                        this.wait(500);
-                        counter++;
+                        System.out.print("\b-");
+                        this.wait(500L);
+                        counter = 0;
                         break;
                     default:
                         break;
