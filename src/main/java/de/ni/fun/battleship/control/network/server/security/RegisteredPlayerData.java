@@ -5,13 +5,11 @@ import de.ni.fun.battleship.control.network.PlayerData;
 
 public class RegisteredPlayerData {
 
-    private final String playerName;
     private PlayerData data;
 
     private ISecurityToken securityToken;
 
     public RegisteredPlayerData(PlayerData data) {
-        this.playerName = data.name;
         this.data = data;
 
         securityToken = SecurityTokenFactory.getInstance().generateToken();
@@ -22,7 +20,11 @@ public class RegisteredPlayerData {
     }
 
     public String getNameOfPlayer() {
-        return this.playerName;
+        return this.data.name;
+    }
+
+    public PlayerData getData() {
+        return data;
     }
 
     public ISecurityToken getSecurityToken() {

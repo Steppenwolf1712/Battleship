@@ -4,7 +4,9 @@ import de.ni.fun.battleship.control.network.ISecurityToken;
 import de.ni.fun.battleship.control.network.PlayerData;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PlayerRegistry implements Serializable {
@@ -23,6 +25,15 @@ public class PlayerRegistry implements Serializable {
         if ( single == null)
             single = new PlayerRegistry();
         return single;
+    }
+
+    public List<PlayerData> getListOfPlayers() {
+        List<PlayerData> answer = new ArrayList<PlayerData>();
+
+        for (RegisteredPlayerData data: registeredPlayers.values())
+            answer.add(data.getData());
+
+        return answer;
     }
 
     public ISecurityToken registerPlayer(PlayerData player) throws AlreadyRegisteredException {

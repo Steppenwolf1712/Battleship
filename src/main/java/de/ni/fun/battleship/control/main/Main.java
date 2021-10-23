@@ -1,13 +1,10 @@
 package de.ni.fun.battleship.control.main;
 
-import de.ni.fun.battleship.control.network.client.ConnectionAssistant;
+import de.ni.fun.battleship.control.network.client.BattleshipClient;
 import de.ni.fun.battleship.control.network.server.BattleshipServer;
 import de.ni.fun.battleship.view.IView;
-import de.ni.fun.battleship.model.Settings;
 import de.ni.fun.battleship.view.console.ConsoleView;
-import de.ni.fun.battleship.view.console.Printer;
 
-import java.io.IOException;
 import java.util.Date;
 
 /**
@@ -38,7 +35,7 @@ public class Main {
             String id = "Battle_Player"+(new Date()).getTime();
             String group = "Battleship_Player";
 
-            ConnectionAssistant assist = new ConnectionAssistant(SERVER_URL, SERVER_PORT, id, group);
+            BattleshipClient assist = new BattleshipClient(SERVER_URL, SERVER_PORT, id, group);
 
 
             if (args[1].equals(MODE_CONSOLE)) {
