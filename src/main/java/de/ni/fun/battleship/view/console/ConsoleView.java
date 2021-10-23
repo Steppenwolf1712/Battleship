@@ -40,17 +40,21 @@ public class ConsoleView extends Observable implements IView {
                 answer = buffReader.readLine();
                 temp = Integer.parseInt(answer);
 
-                if (answer.toLowerCase().equals("eröffnen") || temp == 1)
+                if (answer.toLowerCase().equals("eröffnen") || temp == 1) {
                     mode = 1;
-                if (answer.toLowerCase().equals("beitreten") || temp == 2)
+                    break;
+                }
+                if (answer.toLowerCase().equals("beitreten") || temp == 2) {
                     mode = 2;
+                    break;
+                }
 
                 System.out.println("Geben Sie Ihre Wahl mit \"1\"/\"eröffnen\" oder \"2\"/\"beitreten\" an:");
                 System.out.print("Antwort:");
             } catch (IOException e) {
                 System.out.println("Ein Ein/Ausgabe-Fehler ist aufgetreten! Benutzen Sie für Ihre Antwort bitte einfache Zeichen!");
             }
-        } while (mode != 0);
+        } while (mode == 0);
         return mode;
     }
 
