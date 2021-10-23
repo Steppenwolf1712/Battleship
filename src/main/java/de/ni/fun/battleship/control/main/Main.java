@@ -3,7 +3,9 @@ package de.ni.fun.battleship.control.main;
 import de.ni.fun.battleship.control.network.client.BattleshipClient;
 import de.ni.fun.battleship.control.network.server.BattleshipServer;
 import de.ni.fun.battleship.view.IView;
+import de.ni.fun.battleship.model.Settings;
 import de.ni.fun.battleship.view.console.ConsoleView;
+import de.ni.fun.battleship.view.console.Printer;
 
 import java.util.Date;
 
@@ -43,6 +45,8 @@ public class Main {
 
 
             }
+        } else {
+
         }
     }
 }

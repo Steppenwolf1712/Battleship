@@ -12,6 +12,7 @@ import java.util.Map;
 public class PlayerRegistry implements Serializable {
 
     Map<String, RegisteredPlayerData> registeredPlayers;
+    SecurityTokenValidationProcess validationProcess;
 
     public static PlayerRegistry single;
 
@@ -19,6 +20,8 @@ public class PlayerRegistry implements Serializable {
 
     private PlayerRegistry() {
         registeredPlayers = new HashMap<String, RegisteredPlayerData>();
+        validationProcess = new SecurityTokenValidationProcess();
+        validationProcess.run();
     }
 
     public static PlayerRegistry getInstance() {

@@ -4,25 +4,23 @@ import de.ni.fun.battleship.view.console.Printer;
 
 public class SecurityTokenValidationProcess extends Thread {
 
-    private PlayerRegistry registry;
-
     private boolean stopIt;
 
-    public SecurityTokenValidationProcess(PlayerRegistry registry) {
-        this.registry = registry;
+    public SecurityTokenValidationProcess() {
         stopIt = false;
     }
 
     public void run() {
+        PlayerRegistry registry = PlayerRegistry.getInstance();
         while (!stopIt) {
-            for (RegisteredPlayerData data : registry.registeredPlayers.values()) {
-                if (!data.isRegistrationStillValid()) {
-                    registry.registeredPlayers.remove(data.getNameOfPlayer());
-                    Printer.getInstance().printMsg(this.getClass(), "Der Player " + data.getNameOfPlayer() + " wurde wegen Inaktivität aus der Registry entfernt!");
-                }
-            }
-
             try {
+                for (RegisteredPlayerData data : registry.registeredPlayers.values()) {
+                    if (!data.isRegistrationStillValid()) {
+                        registry.registeredPlayers.remove(data.getNameOfPlayer());
+                        Printer.getInstance().printMsg(this.getClass(), "Der Player " + data.getNameOfPlayer() + " wurde wegen Inaktivität aus der Registry entfernt!");
+                    }
+                }
+
                 this.wait(60000);
             } catch (InterruptedException e) {
                 Printer.getInstance().printMsg(this.getClass(), "Die Validierung der PlayerRegistry wurde interrupted! Valiation stopt!");
