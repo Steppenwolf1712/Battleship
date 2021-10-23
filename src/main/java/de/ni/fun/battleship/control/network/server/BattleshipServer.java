@@ -20,7 +20,6 @@ public class BattleshipServer extends Server {
     public void preStart() {
 
         System.out.println("BattleShip-Server startet!");
-
         this.registerMethod(MethodID.INITIALCONNECTION, new InitialisationMethod());
 
 
