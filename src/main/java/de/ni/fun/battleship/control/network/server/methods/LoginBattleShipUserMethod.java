@@ -10,11 +10,11 @@ import de.ni.fun.battleship.control.network.server.security.PlayerRegistry;
 
 import java.net.Socket;
 
-public class InitialisationMethod implements Executable {
+public class LoginBattleShipUserMethod implements Executable {
 
     Server server;
 
-    public InitialisationMethod(Server server) {
+    public LoginBattleShipUserMethod(Server server) {
         this.server = server;
     }
 

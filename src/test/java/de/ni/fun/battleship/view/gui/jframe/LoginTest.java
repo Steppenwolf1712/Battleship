@@ -1,8 +1,8 @@
 package de.ni.fun.battleship.view.gui.jframe;
 
-public class StartAndLoginTest {
+public class LoginTest {
 
     public static void main(String[] args) {
-        new StartAndLogin(500, 300);
+        new LoginUser(true);
     }
 }

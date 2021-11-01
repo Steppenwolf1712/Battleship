@@ -14,15 +14,11 @@ import java.util.Date;
  */
 public class Main {
 
-    public static final String MODE_CONSOLE = "Konsole";
-    public static final String MODE_GUI = "GUI";
     public static final String MODE_SERVER = "SERVER";
     public static final String MODE_CLIENT = "CLIENT";
 
     public static final int SERVER_PORT = 58234;
     public static final String SERVER_URL = "home.jamadeluxe.de";
-
-    public static IView view;
 
     public static void main(String args[]) {
         if (args.length < 2) {
@@ -39,14 +35,8 @@ public class Main {
 
             BattleshipClient assist = new BattleshipClient(SERVER_URL, SERVER_PORT, id, group);
 
-
-            if (args[1].equals(MODE_CONSOLE)) {
-                view = ConsoleView.getConsole();
-
-
-            }
         } else {
-
+            //Macht ein Mode neben Client und Server Sinn?
         }
     }
 }

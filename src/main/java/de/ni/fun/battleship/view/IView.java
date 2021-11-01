@@ -9,9 +9,10 @@ public interface IView {
      * <p>
      * returns Answer whether the game shall be hosted (1) oder be joined (2)
      */
-    public int askMode();
 
-    public Settings askSettings();
+    public void askLogin();
+    public void askRegistration();
+    public void askSettings();
 
     public void waitForPlayer(Settings settings);
     public void stopWaitingForPlayer();

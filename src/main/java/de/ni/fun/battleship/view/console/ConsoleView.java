@@ -11,6 +11,7 @@ import java.util.Observable;
 /**
  * This Class describes a singleton Console class for simple representation and testings
  */
+@Deprecated
 public class ConsoleView extends Observable implements IView {
 
     private static ConsoleView single = null;
@@ -27,40 +28,19 @@ public class ConsoleView extends Observable implements IView {
         return single;
     }
 
-    public int askMode() {
-        System.out.println("Willkommen zu Battleship!\nWollen Sie ein Spiel eröffnen (1) oder einem Spiel beitreten (2)?");
-        System.out.print("Antwort:");
-        InputStreamReader reader = new InputStreamReader(System.in);
-        BufferedReader buffReader = new BufferedReader(reader);
+    @Override
+    public void askLogin() {
 
-        int mode = 0, temp;
-        String answer = null;
-        do {
-            try {
-                answer = buffReader.readLine();
-                temp = Integer.parseInt(answer);
-
-                if (answer.toLowerCase().equals("eröffnen") || temp == 1) {
-                    mode = 1;
-                    break;
-                }
-                if (answer.toLowerCase().equals("beitreten") || temp == 2) {
-                    mode = 2;
-                    break;
-                }
-
-                System.out.println("Geben Sie Ihre Wahl mit \"1\"/\"eröffnen\" oder \"2\"/\"beitreten\" an:");
-                System.out.print("Antwort:");
-            } catch (IOException e) {
-                System.out.println("Ein Ein/Ausgabe-Fehler ist aufgetreten! Benutzen Sie für Ihre Antwort bitte einfache Zeichen!");
-            }
-        } while (mode == 0);
-        return mode;
     }
 
     @Override
-    public Settings askSettings() {
-        return new Settings();
+    public void askRegistration() {
+
+    }
+
+    @Override
+    public void askSettings() {
+
     }
 
     @Override

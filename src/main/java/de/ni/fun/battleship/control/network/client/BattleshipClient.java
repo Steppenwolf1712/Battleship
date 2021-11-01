@@ -14,8 +14,11 @@ import java.util.List;
 
 public class BattleshipClient extends Client implements Executable {
 
+    private boolean isBusyPlaying;
+
     public BattleshipClient(String serverAddress, int ServerPort, String id, String group) {
-        super(serverAddress, ServerPort, 300, false, false, id, group);
+        super(serverAddress, ServerPort, 300, false, true, id, group);
+        isBusyPlaying = false;
     }
 
     public void connect() {
@@ -27,7 +30,7 @@ public class BattleshipClient extends Client implements Executable {
     }
 
     public boolean loginUser(PlayerData data) {
-        String answer = (String)sendMessage(new Datapackage(MethodID.INITIALCONNECTION, data)).get(1);
+        String answer = (String)sendMessage(new Datapackage(MethodID.LOGINBATTLESHIPUSER, data)).get(1);
         Printer.getInstance().printMsg(this, "Antwort des Servers auf Login: "+answer);
 
         if (answer.equals(Communications.ANSWERLOGINSUCCESS))
@@ -42,23 +45,31 @@ public class BattleshipClient extends Client implements Executable {
         return answer;
     }
 
+    public void setBusyPlaying(boolean isBusyPlaying) {
+        this.isBusyPlaying = isBusyPlaying;
+    }
+
     @Override
     public void run(Datapackage datapackage, Socket socket) {
         String methodID = (String)datapackage.get(0);
-        Printer.getInstance().printMsg(this, "Im Ballteship-Client ist folgender Datapackage-Typ angekommen: "+methodID);
-        switch (methodID) {
-            case MethodID.LOGINBATTLESHIPUSER:
+        Printer.getInstance().printMsg(this, "Im Battleship-Client ist folgender Datapackage-Typ angekommen: "+methodID);
+        if (isBusyPlaying) {
 
-                break;
-            case MethodID.LOGOUTBATTLESHIPUSER:
+        } else {
+            switch (methodID) {
+                case MethodID.LOGINBATTLESHIPUSER:
 
-                break;
-            case MethodID.PLAYINGUSERBUSY:
+                    break;
+                case MethodID.LOGOUTBATTLESHIPUSER:
 
-                break;
-            case MethodID.PLAYINGUSERSTOP:
+                    break;
+                case MethodID.PLAYINGUSERBUSY:
 
-                break;
+                    break;
+                case MethodID.PLAYINGUSERSTOP:
+
+                    break;
+            }
         }
     }
 }

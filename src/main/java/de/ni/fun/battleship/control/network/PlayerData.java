@@ -9,4 +9,8 @@ public class PlayerData implements Serializable {
     public PlayerData(String name) {
         this.name = name;
     }
+
+    public String getName() {
+        return this.name;
+    };
 }
