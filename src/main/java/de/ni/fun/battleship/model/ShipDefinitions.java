@@ -31,5 +31,9 @@ public class ShipDefinitions {
         ships[6] = countlongestShips;
     }
 
+    public int getNumberofShipsByLength(int length) {
+        int index = length-2;
+        return ships[index];
+    }
 
 }

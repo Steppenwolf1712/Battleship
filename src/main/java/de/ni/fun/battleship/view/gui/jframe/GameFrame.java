@@ -1,13 +1,20 @@
 package de.ni.fun.battleship.view.gui.jframe;
 
+import de.ni.fun.battleship.model.Settings;
+import de.ni.fun.battleship.view.gui.jframe.panels.ShipAreas;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class GameFrame extends JFrame {
 
     private JLabel l_status;
+    public ShipAreas ownArea, enemyArea;
 
-    public GameFrame() {
+    private Settings settings;
+
+    public GameFrame(Settings settings) {
+        this.settings = settings;
         init();
         this.pack();
         this.setResizable(false);
@@ -23,8 +30,8 @@ public class GameFrame extends JFrame {
         l_status.setHorizontalAlignment(JLabel.CENTER);
         mainPanel.add(l_status, BorderLayout.NORTH);
 
-
-
+        ownArea = new ShipAreas(this.settings, false);
+        mainPanel.add(ownArea, BorderLayout.CENTER);
     }
 
     private String getStatus() {
